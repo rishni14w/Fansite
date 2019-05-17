@@ -1,0 +1,68 @@
+﻿body {
+	margin:0;
+	background-image:url("image/17859583690_1f80f41042_o.png");
+	background-repeat:no-repeat;
+	background-size:cover;
+	background-position:center;
+	color:white;
+}
+
+div.header {
+	overflow:hidden;
+}
+
+ul.nav {
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	background-color:gray;
+	overflow:auto;
+	position:sticky;
+	top:0;
+	width:100%;
+}
+
+li {
+	float:left;
+}
+
+li a {
+	display:block;	
+	text-align:center;
+	text-decoration:none;
+	padding:14px 16px;
+	color:white;
+}
+
+li a:hover {
+	background-color:black;
+	color:pink;
+}
+
+li a.active {
+	background-color:salmon;
+	color:black;
+}
+
+li.loginSignup {
+	float:right;
+}
+
+p {
+	color:white;
+}
+
+/* login */
+#loginHeading {
+	color:white;
+	text-align:center;
+}
+
+#loginForm {
+	background-color:white;
+	padding:20px 80px;
+}
+
+#loginDivContainer {
+	margin-top:40px;
+}
