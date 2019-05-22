@@ -59,10 +59,19 @@ p {
 }
 
 #loginForm {
-	background-color:white;
+	background-color:rgba(255,255,255,0.4);
 	padding:20px 80px;
 }
 
 #loginDivContainer {
 	margin-top:40px;
+}
+
+/* Sign up */
+#signUpFormHeading {
+	text-align:center;
+}
+
+div.input-container {
+	text-align:center;
 }
