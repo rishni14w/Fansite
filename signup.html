@@ -5,11 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="image/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="styles.css">
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
+<!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">-->
+<!--<style>
+.text-container {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+.clearBtn {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  transition: right 0.2s;
+  padding-top:5px;
+
+}
+.show {
+  right: 5px;
+  background-color:red;
+}
+</style>-->
 </head>
 <body>
 
@@ -28,8 +49,9 @@
 <div class="container" id="loginDivContainer">	
 	<div class="row">
 		<div class="col-sm-4" style="background-color:transparent"></div>
-		<div class="col-sm-4" id="loginForm" style="background-color:rgba(255,255,255,0.4)"> 
-			<form action="register.php" method="POST">
+		<div class="col-sm-4" id="loginForm" style="background-color:rgba(255,255,255,0.6)">			
+			<!--<form action="register.php" method="POST">-->
+			<form action="register.php" method="POST" class="needs-validation" novalidate>
 				<h2 id="signUpFormHeading" class="text-center">Sign Up</h2>
 				<!--<div class="input-container" class="text-center">-->
 				<!--<div class="form-group input-group">
@@ -37,21 +59,53 @@
 					<label class="sr-only" for="fname_txt">First Name</label>
 					<input type="text" class="form-control" name="fname" value="" id="fname_txt" placeholder="First Name">
 				</div>-->
-				<div class="form-group">
+				<div class="form-group text-container ">
+					<!--<label for="fname_txt">First Name</label>-->
 					<label class="sr-only" for="fname_txt">First Name</label>
-					<input type="text" class="form-control" name="fname" value="" id="fname_txt" placeholder="First Name">
+					<!--<input type="text" class="form-control" name="fname" value="" id="fname_txt" placeholder="First Name" required  oninvalid="this.setCustomValidity('Enter First Name Here')"
+    oninput="this.setCustomValidity('')">-->
+					<!--<input type="text" class="form-control" name="fname" value="" id="fname_txt" placeholder="First Name" onkeyup="checkInput(this.value)" required>-->
+					<input type="text" class="form-control" name="fname" value="" id="fname_txt" placeholder="First Name" required>
+					<!--<span id="clearBtn1" class="clearBtn"></span>-->
+					
+					<div class="valid-feedback">Valid</div>
+					<div class="invalid-feedback">Please fill this field</div>
 				</div>
 				<div class="form-group">
 					<label class="sr-only" for="lname_txt">Last Name</label>
-					<input type="text" class="form-control" name="lname" value="" id="lname_txt" placeholder="Last Name">
+					<input type="text" class="form-control" name="lname" value="" id="lname_txt" placeholder="Last Name" required>
+					<div class="valid-feedback">Valid</div>
+					<div class="invalid-feedback">Please fill this field</div>
 				</div>				
 				<div class="form-group">
 					<label class="sr-only" for="email_txt">Email</label>
-					<input type="email" class="form-control" name="email" value="" id="email_txt" placeholder="Email">
+					<input type="email" class="form-control" name="email" value="" id="email_txt" placeholder="Email">					
 				</div>
 				<div class="form-group">
 					<label class="sr-only" for="bday_txt">Birthday</label>
 					<input type="date" class="form-control" name="bday" value="" id="bday_txt">
+				</div>
+				<div class="form-group">
+					<!--<div class="form-check form-check-inline">
+					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+					  <label class="form-check-label" for="inlineRadio1">female</label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+					  <label class="form-check-label" for="inlineRadio2">male</label>
+					</div>-->
+					<div class="row">
+						<div class="col-sm-6">
+							<div>
+								<label class="radio-inline"><input type="radio" name="gender" id="radio1" value="Female">Female</label>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div >
+								<label class="radio-inline"><input type="radio" name="gender" id="radio2" value="Male">Male</label>
+							</div>
+						</div>
+					</div>	
 				</div>
 				<div class="form-group">					
 					<!--<label for="bias" style="background-color:white">Bias :	</label><br>-->
@@ -61,7 +115,7 @@
 						<div class="row">
 							<div class="col-sm-6">
 								<div class="form-check">
-									<label class="form-check-label"><input type="checkbox" class="form-check-input" value="">Xiumin</label>
+									<label class="form-check-label"><input type="checkbox" class="form-check-input" name="" value="">Xiumin</label>
 								</div>
 								<div class="form-check">
 									<label class="form-check-label"><input type="checkbox" class="form-check-input" value="">Suho</label>
@@ -98,18 +152,30 @@
 				</div>
 				<div class="form-group">
 					<label class="sr-only" for="username_txt">Username</label>
-					<input type="text" class="form-control" name="username" value="" id="username_txt" placeholder="Username">
+					<input type="text" class="form-control" name="username" value="" id="username_txt" placeholder="Username" required>
+					<div class="valid-feedback">Valid</div>
+					<div class="invalid-feedback">Please fill this field</div>
 				</div>
 				<div class="form-group">
 					<label class="sr-only" for="pwd_txt">Password</label>
-					<input type="password" class="form-control" name="pwd" value="" id="pwd_txt" placeholder="Password">
+					<input type="password" class="form-control" name="pwd" value="" id="pwd_txt" placeholder="Password" required>
+					<div class="valid-feedback">Valid</div>
+					<div class="invalid-feedback">Please fill this field</div>
 				</div>
+				<!--not working
+				<div class="form-group has-warning has-feedback">
+					<label class="sr-only control-label" for="cpwd_txt">Confirm Password</label>
+					<input type="password" class="form-control" name="cpwd" value="" id="cpwd_txt" placeholder="Confirm Password" required>
+					<span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+				</div>-->
 				<div class="form-group">
 					<label class="sr-only" for="cpwd_txt">Confirm Password</label>
-					<input type="password" class="form-control" name="cpwd" value="" id="cpwd_txt" placeholder="Confirm Password">
+					<input type="password" class="form-control" name="cpwd" value="" id="cpwd_txt" placeholder="Confirm Password" required>
+					<div class="valid-feedback">Valid</div>
+					<div class="invalid-feedback">Please fill this field</div>
 				</div>
 				<div class="text-center">
-					<input type="submit" class="btn btn-primary" value="Register" name="submit" id="submit_btn">
+					<input type="submit" class="btn btn-primary" value="Sign Up" name="submit" id="submit_btn">
 				</div>
 				<!--</div>-->				
 			</form>
@@ -117,5 +183,38 @@
 		<div class="col-sm-3" style="background-color:transparent"></div>
 	</div>
 </div>
+
+<script>
+(function(){
+	'use strict';
+	window.addEventListener('load',function(){
+		var forms=document.getElementsByClassName('needs-validation');
+		
+		var validation=Array.prototype.filter.call(forms, function(form){
+			form.addEventListener('submit',function(event){
+				if(form.checkValidity()=== false)
+				{
+					event.preventDefault();
+					event.stopPropagation();
+				}
+				form.classList.add('was-validated');
+			}, false);
+		});
+	}, false);
+})();
+</script> 
+
+<!--
+<script>
+function checkInput(text) {
+
+  if (text) {
+    $("#clearBtn1").addClass("show");
+  } else {
+    $("#clearBtn1").removeClass("show");
+  }
+
+}
+</script> -->
 </body>
 </html>
