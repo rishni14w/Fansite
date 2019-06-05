@@ -2,7 +2,7 @@
 <html lang="en-US">
 <head>
 <title>Exomerry Sign Up</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="image/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -33,157 +33,127 @@
 </style>-->
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:black;position:sticky">
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navdiv" aria-controls="navdiv" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navdiv">
+		<a class="navbar-brand" href="#">Exomerry</a>
+		<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+			<li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">Schedule</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">Discography</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">Gallery</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">video</a></li>
+			<li class="nav-item loginSignup"><a class="nav-link" href="login.html">Login</a></li>
+			<li class="nav-item loginSignup"><a class="nav-link active" href="#">Sign Up<span class="sr-only">(current)</span></a></li>
+		</ul>
+		<form class="form-inline my-2 my-lg-0">
+			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		</form>
+	</div>
+</nav>
 
-<ul class="nav">
-<li><a href="home.html">Home</a></li>
-<li><a href="">Schedule</a></li>
-<li><a href="">Profile</a></li>
-<li><a href="">Discography</a></li>
-<li><a href="">Gallery</a></li>
-<li><a href="">Video</a></li>
-<li class="loginSignup"><a href="login.html">Login</a></li>
-<li class="loginSignup"><a href="#" class="active">Sign Up</a></li>
-</ul>
 <br>
 <h1 id="loginHeading">Come on lets be an Aeri !</h1>
-<div class="container" id="loginDivContainer">	
-	<div class="row">
-		<div class="col-sm-4" style="background-color:transparent"></div>
-		<div class="col-sm-4" id="loginForm" style="background-color:rgba(255,255,255,0.6)">			
-			<!--<form action="register.php" method="POST">-->
-			<form action="register.php" method="POST" class="needs-validation" novalidate>
-				<h2 id="signUpFormHeading" class="text-center">Sign Up</h2>
-				<!--<div class="input-container" class="text-center">-->
-				<!--<div class="form-group input-group">
-					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-					<label class="sr-only" for="fname_txt">First Name</label>
-					<input type="text" class="form-control" name="fname" value="" id="fname_txt" placeholder="First Name">
-				</div>-->
-				<div class="form-group text-container ">
-					<!--<label for="fname_txt">First Name</label>-->
-					<label class="sr-only" for="fname_txt">First Name</label>
-					<!--<input type="text" class="form-control" name="fname" value="" id="fname_txt" placeholder="First Name" required  oninvalid="this.setCustomValidity('Enter First Name Here')"
-    oninput="this.setCustomValidity('')">-->
-					<!--<input type="text" class="form-control" name="fname" value="" id="fname_txt" placeholder="First Name" onkeyup="checkInput(this.value)" required>-->
-					<input type="text" class="form-control" name="fname" value="" id="fname_txt" placeholder="First Name" required>
-					<!--<span id="clearBtn1" class="clearBtn"></span>-->
-					
-					<div class="valid-feedback">Valid</div>
-					<div class="invalid-feedback">Please fill this field</div>
-				</div>
-				<div class="form-group">
-					<label class="sr-only" for="lname_txt">Last Name</label>
-					<input type="text" class="form-control" name="lname" value="" id="lname_txt" placeholder="Last Name" required>
-					<div class="valid-feedback">Valid</div>
-					<div class="invalid-feedback">Please fill this field</div>
-				</div>				
-				<div class="form-group">
-					<label class="sr-only" for="email_txt">Email</label>
-					<input type="email" class="form-control" name="email" value="" id="email_txt" placeholder="Email">					
-				</div>
-				<div class="form-group">
-					<label class="sr-only" for="bday_txt">Birthday</label>
-					<input type="date" class="form-control" name="bday" value="" id="bday_txt">
-				</div>
-				<div class="form-group">
-					<!--<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-					  <label class="form-check-label" for="inlineRadio1">female</label>
-					</div>
-					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-					  <label class="form-check-label" for="inlineRadio2">male</label>
-					</div>-->
-					<div class="row">
-						<div class="col-sm-6">
-							<div>
-								<label class="radio-inline"><input type="radio" name="gender" id="radio1" value="Female">Female</label>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div >
-								<label class="radio-inline"><input type="radio" name="gender" id="radio2" value="Male">Male</label>
-							</div>
-						</div>
-					</div>	
-				</div>
-				<div class="form-group">					
-					<!--<label for="bias" style="background-color:white">Bias :	</label><br>-->
-					<a class="btn btn-default form-control" data-toggle="collapse" href="#collapseCheckbox" role="button" aria-expanded="false" aria-controls="collapseCheckbox">Click to choose Bias(es)</a> 
-					<div class="container collapse" id="collapseCheckbox">	
-						
-						<div class="row">
-							<div class="col-sm-6">
-								<div class="form-check">
-									<label class="form-check-label"><input type="checkbox" class="form-check-input" name="" value="">Xiumin</label>
-								</div>
-								<div class="form-check">
-									<label class="form-check-label"><input type="checkbox" class="form-check-input" value="">Suho</label>
-								</div>
-								<div class="form-check">
-									<label class="form-check-label"><input type="checkbox" class="form-check-input" value="">Lay</label>
-								</div>
-								<div class="form-check">
-									<label class="form-check-label"><input type="checkbox" class="form-check-input" value="">Baekhyun</label>
-								</div>
-								<div class="form-check">
-									<label class="form-check-label"><input type="checkbox" class="form-check-input" value="">Chen</label>
-								</div>
-							</div>
-							<div class="col-sm-6">
-								<div class="form-check">
-									<label class="form-check-label"><input type="checkbox" class="form-check-input" value="">Chanyeol</label>
-								</div>
-								<div class="form-check">
-									<label class="form-check-label"><input type="checkbox" class="form-check-input" value="">D.O</label>
-								</div>
-								<div class="form-check">
-									<label class="form-check-label"><input type="checkbox" class="form-check-input" value="">Kai</label>
-								</div>
-								<div class="form-check">
-									<label class="form-check-label"><input type="checkbox" class="form-check-input" value="">Sehun</label>
-								</div>
-								<div class="form-check">
-									<label class="form-check-label"><input type="checkbox" class="form-check-input" value="">All</label>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="sr-only" for="username_txt">Username</label>
-					<input type="text" class="form-control" name="username" value="" id="username_txt" placeholder="Username" required>
-					<div class="valid-feedback">Valid</div>
-					<div class="invalid-feedback">Please fill this field</div>
-				</div>
-				<div class="form-group">
-					<label class="sr-only" for="pwd_txt">Password</label>
-					<input type="password" class="form-control" name="pwd" value="" id="pwd_txt" placeholder="Password" required>
-					<div class="valid-feedback">Valid</div>
-					<div class="invalid-feedback">Please fill this field</div>
-				</div>
-				<!--not working
-				<div class="form-group has-warning has-feedback">
-					<label class="sr-only control-label" for="cpwd_txt">Confirm Password</label>
-					<input type="password" class="form-control" name="cpwd" value="" id="cpwd_txt" placeholder="Confirm Password" required>
-					<span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
-				</div>-->
-				<div class="form-group">
-					<label class="sr-only" for="cpwd_txt">Confirm Password</label>
-					<input type="password" class="form-control" name="cpwd" value="" id="cpwd_txt" placeholder="Confirm Password" required>
-					<div class="valid-feedback">Valid</div>
-					<div class="invalid-feedback">Please fill this field</div>
-				</div>
-				<div class="text-center">
-					<input type="submit" class="btn btn-primary" value="Sign Up" name="submit" id="submit_btn">
-				</div>
-				<!--</div>-->				
-			</form>
-		</div>
-		<div class="col-sm-3" style="background-color:transparent"></div>
-	</div>
-</div>
 
+  
+<div class="container" id="loginDivContainer">	
+	<h2 id="signUpFormHeading" class="text-center">Sign Up</h2>
+		<form action="register.php" method="POST" style="width:100%">
+			<div class="input-group">
+				<input class="input_class" type="text" name="fname" value="" id="fname_txt" required>
+				<label class="form_label" for="fname_txt">First Name</label>
+			</div>
+			<div class="input-group">
+				<input class="input_class" type="text" name="lname" value="" id="lname_txt" required>
+				<label class="form_label" for="lname_txt">Last Name</label>
+			</div>
+			<div class="input-group">
+				<input class="input_class" type="text" name="email" value="" id="email_txt" required>
+				<label class="form_label" for="email_txt">Email</label>
+			</div>
+			<div class="input-group">
+				<input class="input_class" type="text" name="bday" value="" id="bday_txt" onclick="(this.type='date')" required>
+				<label class="form_label" for="bday_txt">Birthday</label>
+			</div> 
+			<div class="form-group"> 
+				<div class="row">
+					<div class="col-sm-4 radio_class">
+						<div >
+							<label class="radio-inline"><input type="radio" name="gender" id="radio1" value="Female">Female</label>
+						</div>
+					</div>
+					<div class="col-sm-4 radio_class">
+						<div>
+							<label class="radio-inline"><input type="radio" name="gender" id="radio2" value="Male">Male</label>
+						</div>
+					</div>
+				</div>										
+			</div>
+			<div class="form-group">					
+			<!--<label for="bias" style="background-color:white">Bias :	</label><br>-->
+				<a class="btn btn-outline-primary form-control" style="background-color:white;font-size:18px;width:80%;margin-left:40px;color:black" data-toggle="collapse" href="#collapseCheckbox" role="button" aria-expanded="false" aria-controls="collapseCheckbox">Click to choose Bias(es)</a> 
+				<div class="container collapse" id="collapseCheckbox">	
+					<div class="row">
+						<div class="col-sm-6" style="margin-top:5px">
+							<div class="form-check checkox_class">
+								<label class="form-check-label first_chechbox"><input type="checkbox" class="form-check-input biases" name="biases[]" value="Xiumin" id="Xiumin" onclick="uncheckAll(this);">Xiumin</label>
+							</div>
+							<div class="form-check checkox_class">
+								<label class="form-check-label"><input type="checkbox" class="form-check-input biases" name="biases[]" value="Suho" id="Suho" onclick="uncheckAll(this);">Suho</label>
+							</div>
+							<div class="form-check checkox_class">
+								<label class="form-check-label"><input type="checkbox" class="form-check-input biases" name="biases[]" value="Lay" id="Lay" onclick="uncheckAll(this);">Lay</label>
+							</div> 
+							<div class="form-check checkox_class">
+								<label class="form-check-label"><input type="checkbox" class="form-check-input biases" name="biases[]" value="Baekhyun" id="Baekhyun" onclick="uncheckAll(this);">Baekhyun</label>
+							</div>
+							<div class="form-check checkox_class">
+								<label class="form-check-label"><input type="checkbox" class="form-check-input biases" name="biases[]" value="Chen" id="Chen" onclick="uncheckAll(this);">Chen</label>
+							</div>
+						</div>
+						<div class="col-sm-6 second_checkbox" style="margin-top:5px">
+							<div class="form-check checkox_class">
+								<label class="form-check-label"><input type="checkbox" class="form-check-input biases" name="biases[]" value="Chanyeol" id="Chanyeol" onclick="uncheckAll(this);">Chanyeol</label>
+							</div>
+							<div class="form-check checkox_class">
+								<label class="form-check-label"><input type="checkbox" class="form-check-input biases" name="biases[]" value="D.O" id="D.O" onclick="uncheckAll(this);">D.O</label>
+							</div>
+							<div class="form-check checkox_class">
+								<label class="form-check-label"><input type="checkbox" class="form-check-input biases" name="biases[]" value="Kai" id="Kai" onclick="uncheckAll(this);">Kai</label>
+							</div>
+							<div class="form-check checkox_class">
+								<label class="form-check-label"><input type="checkbox" class="form-check-input biases" name="biases[]" value="Sehun" id="Sehun" onclick="uncheckAll(this);">Sehun</label>
+							</div>
+							<div class="form-check checkox_class">
+								<label class="form-check-label"><input type="checkbox" class="form-check-input biases" name="biases[]" value="All" id="All" onclick="uncheckOthers(this);">All</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>	
+			<div class="input-group">
+				<input class="input_class" type="text" name="username" value="" id="username_txt" required>
+				<label class="form_label" for="username_txt">Username</label>
+			</div>
+			<div class="input-group">
+				<input class="input_class" type="password" name="pwd" value="" id="pwd_txt" required>
+				<label class="form_label" for="pwd_txt">Password</label>
+			</div>
+			<div class="input-group">
+				<input class="input_class" type="password"  name="cpwd" value="" id="cpwd_txt" required>
+				<label class="form_label" for="cpwd_txt">Confirm Password</label>
+			</div>
+			<div class="text-center">
+					<input type="submit" class="btn btn-primary submit_btn" value="Sign Up" name="submit" id="submit_btn">
+				</div>
+	</form>
+		
+</div>
+<!--
 <script>
 (function(){
 	'use strict';
@@ -203,7 +173,7 @@
 	}, false);
 })();
 </script> 
-
+-->
 <!--
 <script>
 function checkInput(text) {
@@ -216,5 +186,49 @@ function checkInput(text) {
 
 }
 </script> -->
+
+<script>
+	/**  IF 'ALL' CHECKBOX IS CLICKED THEN IF OTHER CHECKBOXES WITH MEMBER NAMES ARE ALREADY CHECKED THEN THOSE MEMBER NAMED CHECKBOXES SHOULD BE UNCHECKED */
+	function uncheckOthers(obj)
+	{
+		var bias=document.getElementsByClassName("biases");
+		var checkedbias=new Array();
+		
+		for(var i=0; i<bias.length; i++)
+		{
+			if(bias[i].checked)
+			{	
+				if(bias[i].value=="All")
+				{
+					bias[i].checked=true;
+					for(var j=0; j<checkedbias.length; j++)
+					{
+						document.getElementById(checkedbias[j]).checked=false;
+					}
+				}
+				else
+				{
+					checkedbias.push(bias[i].value);
+					
+					for(var l=0; l<checkedbias.length; l++)
+					{
+						document.getElementById(checkedbias[l]).checked=false;
+					}
+					
+				}
+			}
+			
+		}
+	}
+	
+	/**IF THE 'ALL' CHECKBOX IS CHECKED AND THE USER CLICKS ON ANOTHER (MEMBER NAME) CHECKBOX THEN UNCHECK THE 'ALL' CHECKBOX */
+	function uncheckAll(obj)
+	{
+		if(document.getElementById("All").checked==true)
+		{
+			document.getElementById("All").checked=false;
+		}
+	}
+</script>
 </body>
 </html>

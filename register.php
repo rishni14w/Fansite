@@ -21,11 +21,12 @@ require_once "connect.php";
 						$email=$_POST["email"];
 						$bday=$_POST["bday"];
 						$gender=$_POST["gender"];
-						//$bias=$_POST["bias"];
 						$username=$_POST["username"];
 						$pwd=$_POST["pwd"];
 						$cpwd=$_POST["cpwd"];
-						$sql="INSERT INTO registration (FirstName,LastName,Email,Birthday,Gender,UserName,Password,ConfirmPassword) VALUES ('$fname','$lname','$email','$bday','$gender','$username','$pwd','$cpwd')";
+						$biasArray=$_POST["biases"];
+						$biases=implode(",",$biasArray);				
+						$sql="INSERT INTO registration (FirstName,LastName,Email,Birthday,Gender,Bias,UserName,Password,ConfirmPassword) VALUES ('$fname','$lname','$email','$bday','$gender','$biases','$username','$pwd','$cpwd')";
 						$query=mysqli_query($connection,$sql);
 						if($query)
 						{
@@ -48,6 +49,8 @@ require_once "connect.php";
 						echo $cpwd;
 						echo " ...... ";
 						echo "d";
+						echo " ...... ";
+						echo $biases;
 					}
 					
 					mysqli_close($connection);
