@@ -6,10 +6,13 @@
 <link rel="icon" href="image/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"> -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
 
 <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">-->
 <!--<style>
@@ -141,10 +144,13 @@
 			</div>
 			<div class="input-group">
 				<input class="input_class" type="password" name="pwd" value="" id="pwd_txt" required>
+				<!--<span class="input-group-btn"><button class="btn btn-default"><i class="glyphicon glyphicon-eye-open"></i></button><span>-->
+				<i class="fa fa-eye-slash" style="font-size:x-large;margin-top:10px;margin-left:5px" onclick="hideShow_pwd();" role="button" title="show password" id="pwdHideShowIcon"></i>
 				<label class="form_label" for="pwd_txt">Password</label>
 			</div>
 			<div class="input-group">
 				<input class="input_class" type="password"  name="cpwd" value="" id="cpwd_txt" required>
+				<i class="fa fa-eye-slash" style="font-size:x-large;margin-top:10px;margin-left:5px" onclick="hideShow_cpwd();" role="button" title="show confirm password" id="cpwdHideShowIcon"></i>
 				<label class="form_label" for="cpwd_txt">Confirm Password</label>
 			</div>
 			<div class="text-center">
@@ -227,6 +233,46 @@ function checkInput(text) {
 		if(document.getElementById("All").checked==true)
 		{
 			document.getElementById("All").checked=false;
+		}
+	}
+	
+	/**HIDE AND SHOW PASSWORD VALUE */
+	function hideShow_pwd()
+	{
+		var password=document.getElementById("pwd_txt");
+		var pwdHideShowIcon=document.getElementById("pwdHideShowIcon");
+		if(password.type==="text")
+		{
+			pwdHideShowIcon.className="fa fa-eye-slash";
+			pwdHideShowIcon.title="Show password";
+			password.type="password";						
+		}
+		else
+		{
+			pwdHideShowIcon.className="fa fa-eye";			
+			pwdHideShowIcon.title="Hide password";
+			password.type="text";
+		}
+	}
+	
+	/**HIDE AND SHOW CONFIRM PASSWORD VALUE */
+	function hideShow_cpwd()
+	{
+		var cpassword=document.getElementById("cpwd_txt");
+		var cpwdHideShowIcon=document.getElementById("cpwdHideShowIcon");
+		if(cpassword.type==="text")
+		{
+			cpwdHideShowIcon.className="fa fa-eye-slash";
+			cpwdHideShowIcon.title="Show confirm password";
+			cpassword.type="password";
+			
+			
+		}
+		else
+		{
+			cpwdHideShowIcon.className="fa fa-eye";			
+			cpwdHideShowIcon.title="Hide confirm password";
+			cpassword.type="text";
 		}
 	}
 </script>
