@@ -65,24 +65,35 @@
   
 <div class="container" id="loginDivContainer">	
 	<h2 id="signUpFormHeading" class="text-center">Sign Up</h2>
-		<form action="register.php" method="POST" style="width:100%">
-			<div class="input-group">
-				<input class="input_class" type="text" name="fname" value="" id="fname_txt" required>
+		<form name="signUpForm" action="register.php" method="POST" style="width:100%" onsubmit="return validate()">
+			<div class="form-group">
+				<label class="form_label" for="role_select">Select Role</label>
+				<select class="form-control" id="role_select" name="role" onchange="changeForm()" style="width:80%;margin-left:40px;margin-top:30px;border-radius:20px;width:80%;height:20%;padding:10px 10px 10px;font-size:18px;">
+					<option value="Aeri" selected="selected">Aeri</option>
+					<option value="Staff">Staff</option>
+				</select>
+			</div>
+			<div class="input-group changeRoleForm1" style="display:block">
+				<input class="input_class" type="text" name="fname" value="" id="fname_txt" placeholder=" ">
 				<label class="form_label" for="fname_txt">First Name</label>
+				<br><span id="errorfname" style="color:red;"></span>
 			</div>
-			<div class="input-group">
-				<input class="input_class" type="text" name="lname" value="" id="lname_txt" required>
+			<div class="input-group changeRoleForm1" style="display:block">
+				<input class="input_class" type="text" name="lname" value="" id="lname_txt" placeholder=" ">
 				<label class="form_label" for="lname_txt">Last Name</label>
+				<br><span id="errorlname" style="color:red;"></span>
 			</div>
-			<div class="input-group">
-				<input class="input_class" type="text" name="email" value="" id="email_txt" required>
+			<div class="input-group changeRoleForm1" style="display:block">
+				<input class="input_class" type="text" name="email" value="" id="email_txt" placeholder=" ">
 				<label class="form_label" for="email_txt">Email</label>
+				<br><span id="erroremail" style="color:red;"></span>
 			</div>
-			<div class="input-group">
-				<input class="input_class" type="text" name="bday" value="" id="bday_txt" onclick="(this.type='date')" required>
+			<div class="input-group changeRoleForm1" style="display:block">
+				<input class="input_class" type="text" name="bday" value="" id="bday_txt" onclick="(this.type='date')" placeholder=" ">
 				<label class="form_label" for="bday_txt">Birthday</label>
+				<br><span id="errorbday" style="color:red;"></span>
 			</div> 
-			<div class="form-group"> 
+			<div class="form-group changeRoleForm1" style="display:block"> 
 				<div class="row">
 					<div class="col-sm-4 radio_class">
 						<div >
@@ -96,62 +107,65 @@
 					</div>
 				</div>										
 			</div>
-			<div class="form-group">					
+			<div class="form-group changeRoleForm1" style="display:block">					
 			<!--<label for="bias" style="background-color:white">Bias :	</label><br>-->
 				<a class="btn btn-outline-primary form-control" style="background-color:white;font-size:18px;width:80%;margin-left:40px;color:black" data-toggle="collapse" href="#collapseCheckbox" role="button" aria-expanded="false" aria-controls="collapseCheckbox">Click to choose Bias(es)</a> 
 				<div class="container collapse" id="collapseCheckbox">	
 					<div class="row">
 						<div class="col-sm-6" style="margin-top:5px">
 							<div class="form-check checkox_class">
-								<label class="form-check-label first_chechbox"><input type="checkbox" class="form-check-input biases" name="biases[]" value="Xiumin" id="Xiumin" onclick="uncheckAll(this);">Xiumin</label>
+								<label class="form-check-label first_chechbox"><input type="checkbox" class="form-check-input biases" name="biases[]" value="Xiumin" id="Xiumin" onclick="uncheckAll(this)">Xiumin</label>
 							</div>
 							<div class="form-check checkox_class">
-								<label class="form-check-label"><input type="checkbox" class="form-check-input biases" name="biases[]" value="Suho" id="Suho" onclick="uncheckAll(this);">Suho</label>
+								<label class="form-check-label"><input type="checkbox" class="form-check-input biases" name="biases[]" value="Suho" id="Suho" onclick="uncheckAll(this)">Suho</label>
 							</div>
 							<div class="form-check checkox_class">
-								<label class="form-check-label"><input type="checkbox" class="form-check-input biases" name="biases[]" value="Lay" id="Lay" onclick="uncheckAll(this);">Lay</label>
+								<label class="form-check-label"><input type="checkbox" class="form-check-input biases" name="biases[]" value="Lay" id="Lay" onclick="uncheckAll(this)">Lay</label>
 							</div> 
 							<div class="form-check checkox_class">
-								<label class="form-check-label"><input type="checkbox" class="form-check-input biases" name="biases[]" value="Baekhyun" id="Baekhyun" onclick="uncheckAll(this);">Baekhyun</label>
+								<label class="form-check-label"><input type="checkbox" class="form-check-input biases" name="biases[]" value="Baekhyun" id="Baekhyun" onclick="uncheckAll(this)">Baekhyun</label>
 							</div>
 							<div class="form-check checkox_class">
-								<label class="form-check-label"><input type="checkbox" class="form-check-input biases" name="biases[]" value="Chen" id="Chen" onclick="uncheckAll(this);">Chen</label>
+								<label class="form-check-label"><input type="checkbox" class="form-check-input biases" name="biases[]" value="Chen" id="Chen" onclick="uncheckAll(this)">Chen</label>
 							</div>
 						</div>
 						<div class="col-sm-6 second_checkbox" style="margin-top:5px">
 							<div class="form-check checkox_class">
-								<label class="form-check-label"><input type="checkbox" class="form-check-input biases" name="biases[]" value="Chanyeol" id="Chanyeol" onclick="uncheckAll(this);">Chanyeol</label>
+								<label class="form-check-label"><input type="checkbox" class="form-check-input biases" name="biases[]" value="Chanyeol" id="Chanyeol" onclick="uncheckAll(this)">Chanyeol</label>
 							</div>
 							<div class="form-check checkox_class">
-								<label class="form-check-label"><input type="checkbox" class="form-check-input biases" name="biases[]" value="D.O" id="D.O" onclick="uncheckAll(this);">D.O</label>
+								<label class="form-check-label"><input type="checkbox" class="form-check-input biases" name="biases[]" value="D.O" id="D.O" onclick="uncheckAll(this)">D.O</label>
 							</div>
 							<div class="form-check checkox_class">
-								<label class="form-check-label"><input type="checkbox" class="form-check-input biases" name="biases[]" value="Kai" id="Kai" onclick="uncheckAll(this);">Kai</label>
+								<label class="form-check-label"><input type="checkbox" class="form-check-input biases" name="biases[]" value="Kai" id="Kai" onclick="uncheckAll(this)">Kai</label>
 							</div>
 							<div class="form-check checkox_class">
-								<label class="form-check-label"><input type="checkbox" class="form-check-input biases" name="biases[]" value="Sehun" id="Sehun" onclick="uncheckAll(this);">Sehun</label>
+								<label class="form-check-label"><input type="checkbox" class="form-check-input biases" name="biases[]" value="Sehun" id="Sehun" onclick="uncheckAll(this)">Sehun</label>
 							</div>
 							<div class="form-check checkox_class">
-								<label class="form-check-label"><input type="checkbox" class="form-check-input biases" name="biases[]" value="All" id="All" onclick="uncheckOthers(this);">All</label>
+								<label class="form-check-label"><input type="checkbox" class="form-check-input biases" name="biases[]" value="All" id="All" onclick="uncheckOthers(this)">All</label>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>	
-			<div class="input-group">
-				<input class="input_class" type="text" name="username" value="" id="username_txt" required>
+			<div class="input-group" style="display:block">
+				<input class="input_class" type="text" name="username" value="" id="username_txt" placeholder=" ">
 				<label class="form_label" for="username_txt">Username</label>
+				<br><span id="errorusername" style="color:red;"></span>
 			</div>
-			<div class="input-group">
-				<input class="input_class" type="password" name="pwd" value="" id="pwd_txt" required>
+			<div class="input-group" style="display:block">
+				<input class="input_class" type="password" name="pwd" value="" id="pwd_txt" placeholder=" ">
 				<!--<span class="input-group-btn"><button class="btn btn-default"><i class="glyphicon glyphicon-eye-open"></i></button><span>-->
-				<i class="fa fa-eye-slash" style="font-size:x-large;margin-top:10px;margin-left:5px" onclick="hideShow_pwd();" role="button" title="show password" id="pwdHideShowIcon"></i>
+				<i class="fa fa-eye-slash" style="font-size:x-large;margin-top:10px;margin-left:5px" onclick="hideShow_pwd()" role="button" title="show password" id="pwdHideShowIcon"></i>
 				<label class="form_label" for="pwd_txt">Password</label>
+				<br><span id="errorpwd" style="color:red;"></span>
 			</div>
-			<div class="input-group">
-				<input class="input_class" type="password"  name="cpwd" value="" id="cpwd_txt" required>
-				<i class="fa fa-eye-slash" style="font-size:x-large;margin-top:10px;margin-left:5px" onclick="hideShow_cpwd();" role="button" title="show confirm password" id="cpwdHideShowIcon"></i>
+			<div class="input-group" style="display:block">
+				<input class="input_class" type="password"  name="cpwd" value="" id="cpwd_txt" placeholder=" ">
+				<i class="fa fa-eye-slash" style="font-size:x-large;margin-top:10px;margin-left:5px" onclick="hideShow_cpwd()" role="button" title="show confirm password" id="cpwdHideShowIcon"></i>
 				<label class="form_label" for="cpwd_txt">Confirm Password</label>
+				<br><span id="errorcpwd" style="color:red;"></span>
 			</div>
 			<div class="text-center">
 					<input type="submit" class="btn btn-primary submit_btn" value="Sign Up" name="submit" id="submit_btn">
@@ -275,6 +289,205 @@ function checkInput(text) {
 			cpassword.type="text";
 		}
 	}
+	
+	function match()
+	{
+		var pwd=document.getElementById("pwd_txt").value;
+		var cpwd=document.getElementById("cpwd_txt").value;
+		if(pwd===cpwd)
+		{
+			alert("match");
+			document.getElementById("errorcpwd").textContent="Match";
+			document.getElementById("errorcpwd").style.color="green";
+			return true;
+		}
+		else
+		{
+			alert("Do not match");
+			document.getElementById("errorcpwd").textContent="Passwords do not match";
+			return false;
+		}
+	}
+	
+	function getAge(bday)
+	{
+		var today=new Date();
+		var birthday=new Date(bday);
+		var age=today.getFullYear()-birthday.getFullYear();
+		var month=today.getMonth()-birthday.getMonth();
+		var day=today.getDate()-birthday.getDate();
+		if(age<=6)
+		{
+			return age;
+		}
+		if(month<0 || ((month===0)&&(date<0)))
+		{
+			age=age-1;
+		}
+		return age;
+	}
+	
+	function changeForm()
+	{
+		var role=document.getElementById("role_select").value;
+		var AeriForm=document.getElementsByClassName("changeRoleForm1");
+		if(role=="Staff")
+		{		
+			for(var i=0; i<AeriForm.length; i++)
+			{
+				AeriForm[i].style.display="none";
+			}
+			
+		}
+		else
+		{
+			for(var i=0; i<AeriForm.length; i++)
+			{
+				AeriForm[i].style.display="block";
+			}
+		}
+	}
+	
+	function validateEmail(email)
+	{
+		var email=document.getElementById("email_txt").value;
+		var filter=/^([a-zA-Z0-9_\.\-])+\@(([A-Za-z0-9\-])+\.)+([a-zA-z0-9]{2,4})+$/;
+		
+		if(!filter.test(email))
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	
+	function validate()
+	{
+		//var forms=document.getElementsByClassName('needs-validation');
+		var username=document.getElementById("username_txt").value;
+		var pwd=document.getElementById("pwd_txt").value;
+		var cpwd=document.getElementById("cpwd_txt").value;
+		
+		var role=document.getElementById("role_select").value;
+		
+		if(role=="Aeri")
+		{
+			var fname=document.getElementById("fname_txt").value;
+			var lname=document.getElementById("lname_txt").value;
+			var email=document.getElementById("email_txt").value;
+			var bday=document.getElementById("bday_txt").value;
+			
+			if(fname=="")
+			{
+				alert("fname cant be empty");
+				alert("baekhyunnie");
+				document.getElementById("errorfname").textContent="Please enter First Name";
+				return false;
+			}
+			if(!fname=="")
+			{	
+				var alphabet=/^[A-Za-z]+$/;
+				
+				if(!fname.match(alphabet))
+				{
+					alert("Enter alphabet only");
+					document.getElementById("errorfname").textContent="Please enter letters only";
+					return false;
+				}
+			}
+			if(lname=="")
+			{
+				alert("lname cant be empty");
+				document.getElementById("errorfname").textContent="";
+				document.getElementById("errorlname").textContent="Please enter Last Name";
+				return false;
+			}
+			if(!lname=="")
+			{	
+				var alphabet=/^[A-Za-z]+$/;
+				
+				if(!lname.match(alphabet))
+				{
+					alert("Enter alphabet only");
+					document.getElementById("errorlname").textContent="Please enter letters only";
+					return false;
+				}
+			}
+			if(!email=="")
+			{
+				if(!validateEmail(email))
+				{
+					document.getElementById("erroremail").textContent="Please enter valid email";
+					return false;
+				}
+			}			
+			if(!bday=="")
+			{
+				var age=getAge(bday);
+				if(age<7)
+				{
+					document.getElementById("errorbday").textContent="You have to be above age 6";
+					return false;
+				}
+			}
+			
+		}
+		if(username=="")
+		{
+			document.getElementById("errorusername").textContent="Please enter username";
+			return false;
+		}
+		if(!username=="")
+		{
+			var alphanumericunderscore=/^[A-Za-z0-9_]+$/;
+				
+				if(!username.match(alphanumericunderscore))
+				{
+					document.getElementById("errorusername").textContent="Please enter only letters,numbers,underscore";
+					return false;
+				}
+				if(username.length>15)
+				{
+					document.getElementById("errorusername").textContent="Please enter less than 16 characters";
+					return false;
+				}
+		}
+		if(pwd=="")
+		{
+			document.getElementById("errorpwd").textContent="Please enter Password";
+			return false;
+		}
+		if(cpwd=="")
+		{
+			document.getElementById("errorcpwd").textContent="Please enter Confirm Password";
+			return false;
+		}
+		if((!pwd=="")&&(!cpwd==""))
+		{
+			if(!match())
+			{
+				return false;
+			}
+		}
+		if(!pwd=="")
+		{
+			if(pwd.length<8)
+			{
+				alert("pwd must have 8 or more characters");
+				return false;
+			}
+		}
+		
+		else
+		{
+			return true;
+		}
+	
+	}
 </script>
+
 </body>
 </html>
+

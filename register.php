@@ -1,59 +1,105 @@
 <?php
 require_once "connect.php";
 	if(isset($_POST["submit"]))
+	{
+		$userid=uniqid(mt_rand()."EXOL");
+		
+		$role=$_POST["role"];
+		
+		if($role=="Aeri")
+		{
+			$role="2";
+			if(!((empty($_POST["fname"]))||(empty($_POST["lname"]))||(empty($_POST["username"]))||(empty($_POST["pwd"]))||(empty($_POST["cpwd"]))))
 			{
-				echo "b";
-				if(!((empty($_POST["fname"]))||(empty($_POST["lname"]))||(empty($_POST["username"]))||(empty($_POST["pwd"]))||(empty($_POST["cpwd"]))))
+				
+				$connection=connect();
+				
+				if(!$connection)
 				{
-					echo "a";
+					die("connection failed :" + mysqli_connect_error());
+				}
+				else
+				{
+					$fname=test_input($_POST["fname"]);
+					$lname=test_input($_POST["lname"]);
+					$email=test_input($_POST["email"]);
+					$bday=$_POST["bday"];
 					
-					$connection=connect();
-					
-					if(!$connection)
+					if(!empty($_POST["gender"]))
 					{
-						die("connection failed :" + mysqli_connect_error());
+						$gender=$_POST["gender"];
 					}
 					else
 					{
-						echo "c";
-						$fname=$_POST["fname"];
-						$lname=$_POST["lname"];
-						$email=$_POST["email"];
-						$bday=$_POST["bday"];
-						$gender=$_POST["gender"];
-						$username=$_POST["username"];
-						$pwd=$_POST["pwd"];
-						$cpwd=$_POST["cpwd"];
+						$gender=null;
+					}
+					if(!empty($_POST["biases"]))
+					{
 						$biasArray=$_POST["biases"];
-						$biases=implode(",",$biasArray);				
-						$sql="INSERT INTO registration (FirstName,LastName,Email,Birthday,Gender,Bias,UserName,Password,ConfirmPassword) VALUES ('$fname','$lname','$email','$bday','$gender','$biases','$username','$pwd','$cpwd')";
-						$query=mysqli_query($connection,$sql);
-						if($query)
+						$biases=implode(",",$biasArray);
+					}
+					else
+					{
+						$biases=null;
+					}
+					$username=test_input($_POST["username"]);
+					$pwd=test_input($_POST["pwd"]);
+					$hashed_pwd=password_hash($pwd,PASSWORD_DEFAULT);
+					$cpwd=$_POST["cpwd"];
+									
+					$sql="INSERT INTO user (UserId,FirstName,LastName,Email,Birthday,Gender,Bias,UserName,Password) VALUES ('$userid','$fname','$lname','$email','$bday','$gender','$biases','$username','$hashed_pwd')";
+					$query=mysqli_query($connection,$sql);
+					if($query)
+					{
+						$sql2="INSERT INTO userrole (UserId,RoleId) VALUES ('$userid','$role')";
+						$query2=mysqli_query($connection,$sql2);
+						if($query2)
 						{
-							header("Location: home.html");
-						}
-						echo $fname;
-						echo " ...... ";
-						echo $lname;
-						echo " ...... ";
-						echo $email;
-						echo " ...... ";
-						echo $bday;
-						echo " ...... ";
-						echo $gender;
-						echo " ...... ";
-						echo $username;
-						echo " ...... ";
-						echo $pwd;
-						echo " ...... ";
-						echo $cpwd;
-						echo " ...... ";
-						echo "d";
-						echo " ...... ";
-						echo $biases;
+							header("Location: login.html");
+						}						
+					}
+				}
+				
+				mysqli_close($connection);
+			}
+		}
+		else
+		{
+			if(!((empty($_POST["username"]))||(empty($_POST["pwd"]))||(empty($_POST["cpwd"]))))
+			{
+				$connection=connect();
+				
+				if(!$connection)
+				{
+					die("connection failed :" + mysqli_connect_error());
+				}
+				else
+				{
+					$username=test_input($_POST["username"]);
+					$pwd=test_input($_POST["pwd"]);
+					$cpwd=$_POST["cpwd"];
+									
+					$sql="UPDATE user SET Password='$pwd' WHERE UserName='$username'";
+					$query=mysqli_query($connection,$sql);
+					echo "role1";
+					if($query)
+					{
+						header("Location: login.html");
 					}
 					
-					mysqli_close($connection);
 				}
+				
+				mysqli_close($connection);
 			}
+		}
+		
+	}
+	
+	function test_input($data)
+	{
+		$data=trim($data);
+		$data=stripslashes($data);
+		$data=htmlspecialchars($data);
+		return $data;
+	}
 ?>
