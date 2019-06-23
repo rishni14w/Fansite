@@ -1,4 +1,5 @@
-﻿body {
+﻿
+body {
 	margin:0;
 	background-image:url("image/17859583690_1f80f41042_o.png");
 	background-repeat:no-repeat;
@@ -142,9 +143,8 @@ input{
 	transition:0.3s ease all;
 }
 
-
-input:focus ~ label,
-input:valid ~ label{
+.input_class:focus ~ label,
+.input_class:not(:placeholder-shown) ~ label{
 	top:-25px;
 	font-size:16px;
 	color:#F11F76;
@@ -180,6 +180,11 @@ input[type='checkbox'] {
 	margin-bottom:50px;
 	width:80%;
 }
+
+#errorfname {
+	color:red;
+}
+
 @media screen and (max-width: 600px) {
   .input-group, .form-group, #loginDivContainer, .col-sm-6 {
     width: 100%;
