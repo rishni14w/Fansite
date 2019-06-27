@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿<?php include ('register.php') ?>
+<!DOCTYPE html>
 <html lang="en-US">
 <head>
 <title>Exomerry Sign Up</title>
@@ -296,15 +297,14 @@ function checkInput(text) {
 		var cpwd=document.getElementById("cpwd_txt").value;
 		if(pwd===cpwd)
 		{
-			alert("match");
 			document.getElementById("errorcpwd").textContent="Match";
 			document.getElementById("errorcpwd").style.color="green";
 			return true;
 		}
 		else
 		{
-			alert("Do not match");
-			document.getElementById("errorcpwd").textContent="Passwords do not match";
+			document.getElementById("errorcpwd").style.color="red";
+			//document.getElementById("errorcpwd").textContent="Passwords do not match";
 			return false;
 		}
 	}
@@ -337,6 +337,9 @@ function checkInput(text) {
 			{
 				AeriForm[i].style.display="none";
 			}
+			document.getElementById("errorusername").textContent="";
+			document.getElementById("errorpwd").textContent="";
+			document.getElementById("errorcpwd").textContent="";
 			
 		}
 		else
@@ -345,6 +348,13 @@ function checkInput(text) {
 			{
 				AeriForm[i].style.display="block";
 			}
+			document.getElementById("errorfname").textContent="";
+			document.getElementById("errorlname").textContent="";
+			document.getElementById("erroremail").textContent="";
+			document.getElementById("errorbday").textContent="";
+			document.getElementById("errorusername").textContent="";
+			document.getElementById("errorpwd").textContent="";
+			document.getElementById("errorcpwd").textContent="";
 		}
 	}
 	
@@ -364,13 +374,15 @@ function checkInput(text) {
 	}
 	
 	function validate()
-	{
+	{ 
 		//var forms=document.getElementsByClassName('needs-validation');
 		var username=document.getElementById("username_txt").value;
 		var pwd=document.getElementById("pwd_txt").value;
 		var cpwd=document.getElementById("cpwd_txt").value;
 		
 		var role=document.getElementById("role_select").value;
+		
+		var returnValue;
 		
 		if(role=="Aeri")
 		{
@@ -379,110 +391,173 @@ function checkInput(text) {
 			var email=document.getElementById("email_txt").value;
 			var bday=document.getElementById("bday_txt").value;
 			
-			if(fname=="")
+			if((fname=="")||(lname=="")||(email=="")||(username=="")||(pwd=="")||(cpwd==""))
 			{
-				alert("fname cant be empty");
-				alert("baekhyunnie");
-				document.getElementById("errorfname").textContent="Please enter First Name";
-				return false;
-			}
-			if(!fname=="")
-			{	
-				var alphabet=/^[A-Za-z]+$/;
-				
-				if(!fname.match(alphabet))
+				if(fname=="")
 				{
-					alert("Enter alphabet only");
-					document.getElementById("errorfname").textContent="Please enter letters only";
-					return false;
+					document.getElementById("errorfname").textContent="Please enter First Name";
 				}
+				if(lname=="")
+				{
+					document.getElementById("errorlname").textContent="Please enter Last Name";
+				}
+				if(email=="")
+				{
+					document.getElementById("erroremail").textContent="Please enter email";
+				}
+				if(username=="")
+				{
+					document.getElementById("errorusername").textContent="Please enter username";
+				}
+				if(pwd=="")
+				{
+					document.getElementById("errorpwd").textContent="Please enter Password";
+				}
+				if(cpwd=="")
+				{
+					document.getElementById("errorcpwd").textContent="Please enter Confirm Password";
+				}
+				returnValue=false;
+				return returnValue;
 			}
-			if(lname=="")
+			if((!fname=="")||(!lname=="")||(!email=="")||(!bday=="")||(!username=="")||(!pwd=="")||(!cpwd==""))
 			{
-				alert("lname cant be empty");
-				document.getElementById("errorfname").textContent="";
-				document.getElementById("errorlname").textContent="Please enter Last Name";
-				return false;
-			}
-			if(!lname=="")
-			{	
-				var alphabet=/^[A-Za-z]+$/;
-				
-				if(!lname.match(alphabet))
-				{
-					alert("Enter alphabet only");
-					document.getElementById("errorlname").textContent="Please enter letters only";
-					return false;
+				if(!fname=="")
+				{	
+					var alphabet=/^[A-Za-z]+$/;
+					
+					if(!fname.match(alphabet))
+					{
+						document.getElementById("errorfname").textContent="Please enter letters only";
+						returnValue=false;
+					}
 				}
-			}
-			if(!email=="")
-			{
-				if(!validateEmail(email))
-				{
-					document.getElementById("erroremail").textContent="Please enter valid email";
-					return false;
+				if(!lname=="")
+				{	
+					var alphabet=/^[A-Za-z]+$/;
+					
+					if(!lname.match(alphabet))
+					{
+						document.getElementById("errorlname").textContent="Please enter letters only";
+						returnValue=false;
+					}
 				}
-			}			
-			if(!bday=="")
-			{
-				var age=getAge(bday);
-				if(age<7)
+				if(!email=="")
 				{
-					document.getElementById("errorbday").textContent="You have to be above age 6";
-					return false;
+					if(!validateEmail(email))
+					{
+						document.getElementById("erroremail").textContent="Please enter valid email";
+						returnValue=false;
+					}
+				}			
+				if(!bday=="")
+				{
+					var age=getAge(bday);
+					if(age<7)
+					{
+						document.getElementById("errorbday").textContent="You have to be above age 6";
+						returnValue=false;
+					}
 				}
+				if(!username=="")
+				{
+					var alphanumericunderscore=/^[A-Za-z0-9_]+$/;
+						
+					if(!username.match(alphanumericunderscore))
+					{
+						document.getElementById("errorusername").textContent="Please enter only letters,numbers,underscore";
+						returnValue=false;
+					}
+					if(username.length>15)
+					{
+						document.getElementById("errorusername").textContent="Please enter less than 16 characters";
+						returnValue=false;
+					}
+				}
+				if(!pwd=="")
+				{
+					if(pwd.length<8)
+					{
+						document.getElementById("errorpwd").textContent="Please enter 8 or more characters";
+						returnValue=false;
+					}
+				}
+				if((!pwd=="")&&(!cpwd==""))
+				{
+					if(!match())
+					{
+						document.getElementById("errorcpwd").textContent="Passwords do not match";
+						returnValue=false;
+					}
+				}
+				else
+				{
+					returnValue=true;
+				}
+				alert(returnValue);
+				return returnValue;
 			}
 			
 		}
-		if(username=="")
-		{
-			document.getElementById("errorusername").textContent="Please enter username";
-			return false;
-		}
-		if(!username=="")
-		{
-			var alphanumericunderscore=/^[A-Za-z0-9_]+$/;
-				
-				if(!username.match(alphanumericunderscore))
-				{
-					document.getElementById("errorusername").textContent="Please enter only letters,numbers,underscore";
-					return false;
-				}
-				if(username.length>15)
-				{
-					document.getElementById("errorusername").textContent="Please enter less than 16 characters";
-					return false;
-				}
-		}
-		if(pwd=="")
-		{
-			document.getElementById("errorpwd").textContent="Please enter Password";
-			return false;
-		}
-		if(cpwd=="")
-		{
-			document.getElementById("errorcpwd").textContent="Please enter Confirm Password";
-			return false;
-		}
-		if((!pwd=="")&&(!cpwd==""))
-		{
-			if(!match())
-			{
-				return false;
-			}
-		}
-		if(!pwd=="")
-		{
-			if(pwd.length<8)
-			{
-				alert("pwd must have 8 or more characters");
-				return false;
-			}
-		}
-		
 		else
 		{
-			return true;
+			if((username=="")||(pwd=="")||(cpwd==""))
+			{
+				if(username=="")
+				{
+					document.getElementById("errorusername").textContent="Please enter username";
+				}
+				if(pwd=="")
+				{
+					document.getElementById("errorpwd").textContent="Please enter Password";
+				}
+				if(cpwd=="")
+				{
+					document.getElementById("errorcpwd").textContent="Please enter Confirm Password";
+				}
+				returnValue=false;
+				return returnValue;
+			}
+			else if((!username=="")||(!pwd=="")||(!cpwd==""))
+			{
+				if(!username=="")
+				{
+					var alphanumericunderscore=/^[A-Za-z0-9_]+$/;
+						
+					if(!username.match(alphanumericunderscore))
+					{
+						document.getElementById("errorusername").textContent="Please enter only letters,numbers,underscore";
+						returnValue=false;
+					}
+					if(username.length>15)
+					{
+						document.getElementById("errorusername").textContent="Please enter less than 16 characters";
+						returnValue=false;
+					}
+				}
+				if(!pwd=="")
+				{
+					if(pwd.length<8)
+					{
+						document.getElementById("errorpwd").textContent="Please enter 8 or more characters";
+						returnValue=false;
+					}
+				}
+				if((!pwd=="")&&(!cpwd==""))
+				{
+					if(!match())
+					{
+						document.getElementById("errorcpwd").textContent="Passwords do not match";
+						returnValue=false;
+					}
+				}
+				else
+				{
+					returnValue=true;
+				}
+				alert(returnValue);
+				return returnValue;
+			}
 		}
 	
 	}
