@@ -147,7 +147,7 @@ input{
 .input_class:not(:placeholder-shown) ~ label{
 	top:-25px;
 	font-size:16px;
-	color:#F11F76;
+	color:blue;
 	left:20px;
 }
 
